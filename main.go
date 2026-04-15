@@ -57,7 +57,6 @@ func WriteFile() {
 			return
 		}
 		file.WriteString(text)
-
 	}
 
 }
