@@ -67,7 +67,6 @@ func WriteFile() {
 		if text == "" {
 			continue
 		}
-
 		file.WriteString("User: " + text + "\n")
 	}
 
