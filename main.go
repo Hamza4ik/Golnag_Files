@@ -1,9 +1,11 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -48,16 +50,24 @@ func WriteFile() {
 	if err != nil {
 		panic(err)
 	}
-	for {
 
-		var text string
-		fmt.Scan(&text)
+	reader := bufio.NewReader(os.Stdin)
+
+	for {
+		fmt.Println("Enter text (type'exit' to stop):")
+
+		text, _ := reader.ReadString('\n')
+
+		text = strings.TrimSpace(text)
 
 		if text == "exit" {
-			return
+			break
 		}
-		file.WriteString(text)
 
+		if text == "" {
+			continue
+		}
+		file.WriteString("User: " + text + "\n")
 	}
 
 }
